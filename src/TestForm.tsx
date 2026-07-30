@@ -6,7 +6,7 @@ type FormFields = {
 };
 
 export function TestForm() {
-  const { register, reset } = useForm<FormFields>({
+  const { register, reset, getValues } = useForm<FormFields>({
     defaultValues: {
       firstName: "John",
       lastName: "Doe",
@@ -22,7 +22,9 @@ export function TestForm() {
       <button
         type="button"
         onClick={() => {
+          console.log(getValues());
           reset();
+          console.log(getValues());
         }}
       >
         Reset
@@ -30,10 +32,12 @@ export function TestForm() {
       <button
         type="button"
         onClick={() => {
+          console.log(getValues());
           reset({
             firstName: "Jane",
             lastName: "Smith",
           });
+          console.log(getValues());
         }}
       >
         Reset with value
